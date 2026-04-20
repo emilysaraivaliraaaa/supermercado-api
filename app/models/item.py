@@ -8,6 +8,7 @@ class ItemCreate(BaseModel):
     preco: float = Field(..., description="Preço do item", gt=0)
     quantidade: int = Field(..., description="Quantidade em estoque", ge=0)
     categoria: str = Field(..., description="Categoria do item")
+    marca: str = Field(..., description="Marca do Produto")
 
     class Config:
         json_schema_extra = {
@@ -15,7 +16,8 @@ class ItemCreate(BaseModel):
                 "nome": "Arroz",
                 "preco": 25.90,
                 "quantidade": 100,
-                "categoria": "Grãos"
+                "categoria": "Grãos",
+                "marca": "Urbano"
             }
         }
 
@@ -31,7 +33,8 @@ class Item(ItemCreate):
                 "nome": "Arroz",
                 "preco": 25.90,
                 "quantidade": 100,
-                "categoria": "Grãos"
+                "categoria": "Grãos",
+                "marca": "Urbano"
             }
         }
 
@@ -42,3 +45,4 @@ class ItemUpdate(BaseModel):
     preco: Optional[float] = Field(None, description="Preço do item", gt=0)
     quantidade: Optional[int] = Field(None, description="Quantidade em estoque", ge=0)
     categoria: Optional[str] = Field(None, description="Categoria do item")
+    marca: Optional[str] = Field(None, description="Marca do item")
