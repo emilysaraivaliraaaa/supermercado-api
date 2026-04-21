@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional
+from datetime import date
 
 
 class ItemCreate(BaseModel):
@@ -9,6 +10,7 @@ class ItemCreate(BaseModel):
     quantidade: int = Field(..., description="Quantidade em estoque", ge=0)
     categoria: str = Field(..., description="Categoria do item")
     marca: str = Field(..., description="Marca do Produto")
+    data_validade: date = Field(..., description="Data de validade do produto")
 
     class Config:
         json_schema_extra = {
@@ -17,7 +19,8 @@ class ItemCreate(BaseModel):
                 "preco": 25.90,
                 "quantidade": 100,
                 "categoria": "Grãos",
-                "marca": "Urbano"
+                "marca": "Urbano",
+                "data_validade": "2027-12-31"
             }
         }
 
@@ -34,7 +37,8 @@ class Item(ItemCreate):
                 "preco": 25.90,
                 "quantidade": 100,
                 "categoria": "Grãos",
-                "marca": "Urbano"
+                "marca": "Urbano",
+                "data_validade": "2027-12-31"
             }
         }
 
@@ -46,3 +50,4 @@ class ItemUpdate(BaseModel):
     quantidade: Optional[int] = Field(None, description="Quantidade em estoque", ge=0)
     categoria: Optional[str] = Field(None, description="Categoria do item")
     marca: Optional[str] = Field(None, description="Marca do item")
+    data_validade: Optional[date] = Field(None, description="Data de validade do produto")
