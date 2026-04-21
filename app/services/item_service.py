@@ -33,7 +33,9 @@ class ItemService:
             quantidade=item_data.quantidade,
             categoria=item_data.categoria,
             marca=item_data.marca,
-            data_validade=item_data.data_validade
+            data_validade=item_data.data_validade,
+            codigo_barras=item_data.codigo_barras,
+            fornecedor=item_data.fornecedor
         )
 
         items_db[item_id] = new_item

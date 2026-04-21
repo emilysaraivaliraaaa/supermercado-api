@@ -12,6 +12,7 @@ class ItemCreate(BaseModel):
     marca: str = Field(..., description="Marca do Produto")
     data_validade: date = Field(..., description="Data de validade do produto")
     codigo_barras: Optional[str] = Field(None, description="Código de barras do produto")
+    fornecedor: str = Field(..., description="Nome do fornecedor do produto")
 
     class Config:
         json_schema_extra = {
@@ -22,7 +23,8 @@ class ItemCreate(BaseModel):
                 "categoria": "Grãos",
                 "marca": "Urbano",
                 "data_validade": "2027-12-31",
-                "codigo_barras": "7891234567890"
+                "codigo_barras": "7891234567890",
+                "fornecedor": "Distribuidora ABC"
             }
         }
 
@@ -41,7 +43,8 @@ class Item(ItemCreate):
                 "categoria": "Grãos",
                 "marca": "Urbano",
                 "data_validade": "2027-12-31",
-                "codigo_barras": "7891234567890"
+                "codigo_barras": "7891234567890",
+                "fornecedor": "Distribuidora ABC"
             }
         }
 
@@ -55,3 +58,4 @@ class ItemUpdate(BaseModel):
     marca: Optional[str] = Field(None, description="Marca do item")
     data_validade: Optional[date] = Field(None, description="Data de validade do produto")
     codigo_barras: Optional[str] = Field(None, description="Código de barras do produto")
+    fornecedor: Optional[str] = Field(None, description="Nome do fornecedor do produto")
