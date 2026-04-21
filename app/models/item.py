@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional
+from datetime import date
 
 
 class ItemCreate(BaseModel):
@@ -8,6 +9,11 @@ class ItemCreate(BaseModel):
     preco: float = Field(..., description="Preço do item", gt=0)
     quantidade: int = Field(..., description="Quantidade em estoque", ge=0)
     categoria: str = Field(..., description="Categoria do item")
+    marca: str = Field(..., description="Marca do Produto")
+    data_validade: date = Field(..., description="Data de validade do produto")
+    codigo_barras: Optional[str] = Field(None, description="Código de barras do produto")
+    fornecedor: str = Field(..., description="Nome do fornecedor do produto")
+    desconto: float = Field(0.0, description="Percentual de desconto aplicado ao produto", ge=0, le=100)
 
     class Config:
         json_schema_extra = {
@@ -15,7 +21,12 @@ class ItemCreate(BaseModel):
                 "nome": "Arroz",
                 "preco": 25.90,
                 "quantidade": 100,
-                "categoria": "Grãos"
+                "categoria": "Grãos",
+                "marca": "Urbano",
+                "data_validade": "2027-12-31",
+                "codigo_barras": "7891234567890",
+                "fornecedor": "Distribuidora ABC",
+                "desconto": 10.0
             }
         }
 
@@ -31,7 +42,12 @@ class Item(ItemCreate):
                 "nome": "Arroz",
                 "preco": 25.90,
                 "quantidade": 100,
-                "categoria": "Grãos"
+                "categoria": "Grãos",
+                "marca": "Urbano",
+                "data_validade": "2027-12-31",
+                "codigo_barras": "7891234567890",
+                "fornecedor": "Distribuidora ABC",
+                "desconto": 10.0
             }
         }
 
@@ -42,3 +58,8 @@ class ItemUpdate(BaseModel):
     preco: Optional[float] = Field(None, description="Preço do item", gt=0)
     quantidade: Optional[int] = Field(None, description="Quantidade em estoque", ge=0)
     categoria: Optional[str] = Field(None, description="Categoria do item")
+    marca: Optional[str] = Field(None, description="Marca do item")
+    data_validade: Optional[date] = Field(None, description="Data de validade do produto")
+    codigo_barras: Optional[str] = Field(None, description="Código de barras do produto")
+    fornecedor: Optional[str] = Field(None, description="Nome do fornecedor do produto")
+    desconto: Optional[float] = Field(None, description="Percentual de desconto aplicado ao produto", ge=0, le=100)
