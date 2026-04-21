@@ -8,7 +8,10 @@ ITEM_VALIDO = {
     "nome": "Arroz",
     "preco": 25.90,
     "quantidade": 100,
-    "categoria": "Grãos"
+    "categoria": "Grãos",
+    "marca": "Urbano",
+    "data_validade": "2027-12-31",
+    "fornecedor": "Distribuidora ABC"
 }
 
 
